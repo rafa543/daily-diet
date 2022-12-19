@@ -19,6 +19,7 @@ export const Container = styled(TouchableOpacity) <Props>`
     justify-content: center;
     border-width: 1px;
     border-color: ${({ theme, type }) => theme.COLORS.GRAY_100};
+    margin-bottom: 30px;
 `
 
 export const Title = styled.Text <Props>`
