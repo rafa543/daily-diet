@@ -1,12 +1,19 @@
-import { Container, Logo, Avatar } from "./styles";
-import logoImg from '@assets/logo.png'
-import avatar from '@assets/user.jpeg'
+import { StatusBar, Text, View } from "react-native";
+import { BackButton, Container, Title } from "./styles";
 
 export default function Header() {
     return (
         <Container>
-            <Logo source={logoImg} />
-            <Avatar source={avatar} />
+            <StatusBar
+                barStyle="light-content"
+                backgroundColor="#D9DADB"
+                translucent
+            />
+            <BackButton/>
+            <Title>
+                Nova refeição
+            </Title>
+            <Title/>
         </Container>
     )
 }

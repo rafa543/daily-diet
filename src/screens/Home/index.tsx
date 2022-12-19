@@ -1,4 +1,4 @@
-import Header from "@components/Header";
+import Topo from "@components/Topo";
 import Meals from "@components/Meals";
 import Percent from "@components/Percent";
 import { Container } from "./styles";
@@ -6,7 +6,7 @@ import { Container } from "./styles";
 export default function Home() {
     return (
         <Container>
-            <Header/>
+            <Topo/>
             <Percent/>
             <Meals/>
         </Container>

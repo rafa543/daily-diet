@@ -11,7 +11,7 @@ type Props = {
 
 export const Container = styled(TouchableOpacity) <Props>`
     width: 100%;
-    height: 50px;
+    height: 55px;
     background-color: ${({ theme, type }) => type == 'NEW' || type == 'EDIT' ? theme.COLORS.GRAY_200 : theme.COLORS.WHITE};
     border-radius: 5px;
     flex-direction: row;

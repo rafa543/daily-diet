@@ -1,21 +1,25 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { ArrowLeft } from "phosphor-react-native";
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
     /* flex: 1; */
-    background-color: white;
+    /* width: 100%; */
+    height: 100px;
+    background-color: #D9DADB;
     flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 28px;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
 `
-export const Logo = styled.Image`
-    width: 82px;
-    height: 37px;
+export const Title = styled.Text`
+    margin-left: 90px;
+    font-size: 18px;
+    font-weight: bold;
 `
-export const Avatar = styled.Image`
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    border-width: 2px;
-    border-color: #323537;
+
+export const BackButton = styled(ArrowLeft).attrs(({theme}) => ({
+    size: 32,
+    color: theme.COLORS.GRAY_200,
+}))`
 `
