@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { ButtonDiet, Container, ContentButton, ContentData, DateAndTime, Hora, HourDateText, Input, InputDataHora, Status, Title } from "./styles";
-import { Button, Platform, Text } from "react-native";
+import { Platform, Text, View } from "react-native";
+import Button from "@components/Button";
 
 export default function Form() {
     const [date, setDate] = useState(new Date())
@@ -32,55 +33,59 @@ export default function Form() {
     };
 
     return (
-        <Container>
-            <Title>Nome</Title>
-            <Input />
+        <>
+            <Container>
+                <Title>Nome</Title>
+                <Input />
 
-            <Title>Descrição</Title>
-            <Input multiline numberOfLines={6} />
+                <Title>Descrição</Title>
+                <Input multiline numberOfLines={6} />
 
-            <DateAndTime>
-                <ContentData>
-                    <Title>Data</Title>
-                    <InputDataHora onPress={() => showMode('date')}>
-                        <HourDateText>{dateSelected}</HourDateText>
-                    </InputDataHora>
-                </ContentData>
+                <DateAndTime>
+                    <ContentData>
+                        <Title>Data</Title>
+                        <InputDataHora onPress={() => showMode('date')}>
+                            <HourDateText>{dateSelected}</HourDateText>
+                        </InputDataHora>
+                    </ContentData>
 
-                <ContentData>
-                    <Title>Hora</Title>
-                    <InputDataHora onPress={() => showMode('time')}>
-                        <HourDateText>{hourSelected}</HourDateText>
-                    </InputDataHora>
-                </ContentData>
-                {
-                    show && (
-                        <DateTimePicker
-                            testID="DateTimePicker"
-                            value={date}
-                            mode={mode}
-                            is24Hour={true}
-                            display="default"
-                            onChange={onChange}
-                        />
-                    )
-                }
+                    <ContentData>
+                        <Title>Hora</Title>
+                        <InputDataHora onPress={() => showMode('time')}>
+                            <HourDateText>{hourSelected}</HourDateText>
+                        </InputDataHora>
+                    </ContentData>
+                    {
+                        show && (
+                            <DateTimePicker
+                                testID="DateTimePicker"
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display="default"
+                                onChange={onChange}
+                            />
+                        )
+                    }
 
-            </DateAndTime>
+                </DateAndTime>
 
-            <Title>Esta dentro da dieta?</Title>
-            <ContentButton>
-                <ButtonDiet>
-                    <Status />
-                    <Text>Sim</Text>
-                </ButtonDiet>
+                <Title>Esta dentro da dieta?</Title>
+                <ContentButton>
+                    <ButtonDiet>
+                        <Status />
+                        <Text>Sim</Text>
+                    </ButtonDiet>
 
-                <ButtonDiet>
-                    <Status />
-                    <Text>Não</Text>
-                </ButtonDiet>
-            </ContentButton>
+                    <ButtonDiet>
+                        <Status />
+                        <Text>Não</Text>
+                    </ButtonDiet>
+                </ContentButton>
 
-        </Container >
+
+            </Container >
+            <Button />
+        </>
     )
 }

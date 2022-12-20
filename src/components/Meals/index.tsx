@@ -1,4 +1,4 @@
-import { ButtonIcon } from "@components/Button";
+import { ButtonIcon } from "@components/ButtonIcon";
 import DayList from "@components/DayList";
 import { FlatList } from "react-native";
 import { Container, Title } from "./styles";
