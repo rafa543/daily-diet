@@ -3,10 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { ArrowLeft } from "phosphor-react-native";
 
 export const Container = styled(SafeAreaView)`
-    /* flex: 1; */
-    /* width: 100%; */
     height: 100px;
-    background-color: #D9DADB;
+    background-color: ${({theme}) => theme.COLORS.GRAY_500};;
     flex-direction: row;
     align-items: center;
     padding-left: 24px;
