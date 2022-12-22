@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { ButtonDiet, Container, ContentButton, ContentData, DateAndTime, Hora, HourDateText, Input, InputDataHora, Status, Title } from "./styles";
-import { Platform, Text, View } from "react-native";
+import { FlatList, Platform, Text, View } from "react-native";
 import Button from "@components/Button";
 
 export default function Form() {
@@ -10,7 +10,7 @@ export default function Form() {
     const [show, setShow] = useState(false)
     const [dateSelected, setDateSelected] = useState("")
     const [hourSelected, setHourSelected] = useState("")
-    const [text, setText] = useState("Empty")
+    const [onDiet, setOnDiet] = useState("")
 
     const onChange = (event: any, selectedDate: any) => {
         const currentDate = selectedDate || date
@@ -20,7 +20,6 @@ export default function Form() {
         let tempDate = new Date(currentDate)
         let fDate = tempDate.getDate() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getFullYear()
         let fTime = tempDate.getHours() + ':' + tempDate.getMinutes()
-        setText(fDate + "\n" + fTime)
         setDateSelected(fDate)
         setHourSelected(fTime)
         console.log(fDate + ' ( ' + fTime + ")")
@@ -72,15 +71,15 @@ export default function Form() {
 
                 <Title>Esta dentro da dieta?</Title>
                 <ContentButton>
-                    <ButtonDiet>
-                        <Status />
-                        <Text>Sim</Text>
-                    </ButtonDiet>
+                    {
+                        ["Sim", "Não"].map((item) => (
+                            <ButtonDiet onDiet={item === onDiet} item={item} onPress={() => setOnDiet(item)}>
+                                <Status color={item} />
+                                <Text>{item}</Text>
+                            </ButtonDiet>
+                        ))
+                    }
 
-                    <ButtonDiet>
-                        <Status />
-                        <Text>Não</Text>
-                    </ButtonDiet>
                 </ContentButton>
 
 

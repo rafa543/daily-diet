@@ -1,6 +1,14 @@
-import { TextInput } from "react-native";
-import styled from "styled-components/native";
+import { TextInput, TouchableOpacity } from "react-native";
+import styled, { css } from "styled-components/native";
 
+type OnDiet = {
+    onDiet?: boolean
+    item: string
+}
+
+type ColorStatus = {
+    color: string
+}
 export const Container = styled.View`
     flex: 1;
     margin-left: 24px;
@@ -47,22 +55,26 @@ export const ContentData = styled.View`
 `
 export const ContentButton = styled.TouchableOpacity`
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; 
 `
 
-export const ButtonDiet = styled.TouchableOpacity`
-    width: 47%;
+export const ButtonDiet = styled(TouchableOpacity) <OnDiet>`
     background-color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme, onDiet, item }) => onDiet && css`
+        border: 1px solid ${({ theme }) => item === 'Não' ? theme.COLORS.RED_DARK : theme.COLORS.GREEN_DARK};
+        background-color:  ${({ theme }) => item === 'Não' ? theme.COLORS.RED_LIGHT : theme.COLORS.GREEN_LIGHT};
+    `}
+    width: 47%;
     height: 50px;
     border-radius: 6px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 `
-export const Status = styled.View`
+export const Status = styled.View <ColorStatus>`
     width: 8px;
     height: 8px;
-    background-color: ${({ theme }) => theme.COLORS.GREEN_DARK};
+    background-color: ${({ theme, color }) => color === "Sim" ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
     border-radius: 4px;
     margin-right: 6px;
 `
