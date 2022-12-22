@@ -1,10 +1,21 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
-    flex: 1;
+export type Largura = {
+    largura?: string
+    title?: string
+}
+
+export const Container = styled.TouchableOpacity<Largura>`
+    /* flex: 1; */
     background-color: ${({ theme }) =>theme.COLORS.GRAY_200 };
-    min-height: 56px;
-    max-height: 56px;
+    /* min-height: 56px;
+    max-height: 56px; */
+    height: 56px;
+    
+    ${({ theme, largura }) => largura && css`
+        width: ${({ theme }) => largura }px;
+    `}
+
     justify-content: center; 
     align-items: center;
     margin-left: 25px;
@@ -14,5 +25,5 @@ export const Container = styled.TouchableOpacity`
 `
 export const Title = styled.Text`
     color: ${({ theme }) =>theme.COLORS.WHITE };
-    font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
 `

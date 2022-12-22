@@ -72,8 +72,8 @@ export default function Form() {
                 <Title>Esta dentro da dieta?</Title>
                 <ContentButton>
                     {
-                        ["Sim", "Não"].map((item) => (
-                            <ButtonDiet onDiet={item === onDiet} item={item} onPress={() => setOnDiet(item)}>
+                        ["Sim", "Não"].map((item, key) => (
+                            <ButtonDiet key={key} onDiet={item === onDiet} item={item} onPress={() => setOnDiet(item)}>
                                 <Status color={item} />
                                 <Text>{item}</Text>
                             </ButtonDiet>
@@ -84,7 +84,7 @@ export default function Form() {
 
 
             </Container >
-            <Button />
+            <Button title="Cadastrar refeição" />
         </>
     )
 }

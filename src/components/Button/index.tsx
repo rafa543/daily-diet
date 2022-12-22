@@ -1,10 +1,12 @@
 import { Text } from "react-native";
 import { Container, Title } from "./styles";
 
-export default function Button() {
+import { Largura } from "./styles";
+
+export default function Button({largura, title}: Largura ) {
     return (
-        <Container>
-            <Title>Cadastrar refeicao</Title>
+        <Container largura={largura}>
+            <Title>{title}</Title>
         </Container>
     )
 }
