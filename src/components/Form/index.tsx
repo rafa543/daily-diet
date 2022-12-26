@@ -38,7 +38,8 @@ export default function Form() {
                 <Input />
 
                 <Title>Descrição</Title>
-                <Input multiline numberOfLines={6} />
+                {/* <Input multiline numberOfLines={6} /> */}
+                <Input multiline description={true}/>
 
                 <DateAndTime>
                     <ContentData>

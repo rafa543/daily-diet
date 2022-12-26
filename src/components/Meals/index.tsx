@@ -2,9 +2,12 @@ import { ButtonIcon } from "@components/ButtonIcon";
 import DayList from "@components/DayList";
 import { FlatList } from "react-native";
 import { Container, Title } from "./styles";
+import {useNavigation} from "@react-navigation/native"
 
 export default function Meals() {
-    const data =[
+    const navigation = useNavigation()
+
+    const data = [
         {
             nome: "X-tudo",
             descricao: "Sanduíche de pão integral com atum e salada de alface e tomate",
@@ -35,18 +38,25 @@ export default function Meals() {
         },
     ]
 
+    function handleNewMeal() {
+        console.log("dd")
+        navigation.navigate("create")
+
+
+    }
+
     return (
         <Container>
-            <Title>Refeições</Title>  
-            <ButtonIcon title="Nova refeição" icon="add"/>
+            <Title>Refeições</Title>
+            <ButtonIcon title="Nova refeição" icon="add" onPress={handleNewMeal} />
             <FlatList
-            data={data}
-            keyExtractor={(item) => item.nome}
-            renderItem={({ item }) => (
-                <DayList  hora={item.hora} nome={item.nome} status={item.status}/>
-            )}
-            showsVerticalScrollIndicator={false}
-        />
+                data={data}
+                keyExtractor={(item) => item.nome}
+                renderItem={({ item }) => (
+                    <DayList hora={item.hora} nome={item.nome} status={item.status} />
+                )}
+                showsVerticalScrollIndicator={false}
+            />
         </Container>
     )
 }

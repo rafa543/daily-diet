@@ -1,7 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
 import { StatusBar, Text, View } from "react-native";
-import { BackButton, Container, Title } from "./styles";
+import { BackButton, BackIcon, Container, Title } from "./styles";
 
 export default function Header() {
+    const navigation = useNavigation()
+
+    function handleGoBack() {
+        navigation.navigate("home")
+    }
+
     return (
         <Container>
             <StatusBar
@@ -9,11 +16,13 @@ export default function Header() {
                 backgroundColor="#D9DADB"
                 translucent
             />
-            <BackButton/>
+            <BackButton onPress={handleGoBack}>
+                <BackIcon/>
+            </BackButton>
             <Title>
                 Nova refeição
             </Title>
-            <Title/>
+            <Title />
         </Container>
     )
 }

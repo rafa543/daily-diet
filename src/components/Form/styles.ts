@@ -9,6 +9,11 @@ type OnDiet = {
 type ColorStatus = {
     color: string
 }
+
+type Description = {
+    description?: boolean
+}
+
 export const Container = styled.View`
     flex: 1;
     margin-left: 24px;
@@ -22,9 +27,14 @@ export const Title = styled.Text`
     font-weight: bold;
 `
 
-export const Input = styled(TextInput)`
+export const Input = styled(TextInput) <Description>`
+    ${({ theme, description }) => description && css`
+        height: 120PX;
+    `}
+
     border-width: 1px;
     border-color: ${({ theme }) => theme.COLORS.GRAY_500};
+    font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
     border-radius: 6px;
     padding: 15px;
 `

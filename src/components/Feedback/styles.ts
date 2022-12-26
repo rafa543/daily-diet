@@ -14,8 +14,8 @@ export const Title = styled.Text`
 
 export const Subtitle = styled.Text`
     font-size: ${({theme}) => theme.FONT_SIZE.MD}px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `
 export const Illustration = styled.Image`
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `

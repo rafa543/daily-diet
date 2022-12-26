@@ -1,16 +1,18 @@
-import Create from "@screens/Create";
-import FeedbackScreen from "@screens/FeedbackScreen";
-import Home from "@screens/Home";
+import Routes from "./src/routes";
 import { ThemeProvider } from 'styled-components/native';
+import { StatusBar, Text, View } from "react-native";
 
 import theme from './src/theme';
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Home /> */}
-      {/* <Create/> */}
-      <FeedbackScreen/>
+      <StatusBar
+                barStyle="light-content"
+                backgroundColor="white"
+                translucent
+            />
+      <Routes/>
     </ThemeProvider>
   );
 }
