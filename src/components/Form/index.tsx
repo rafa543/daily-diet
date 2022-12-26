@@ -5,6 +5,9 @@ import { FlatList, Platform, Text, View } from "react-native";
 import Button from "@components/Button";
 
 export default function Form() {
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+
     const [date, setDate] = useState(new Date())
     const [mode, setMode] = useState();
     const [show, setShow] = useState(false)
@@ -31,15 +34,20 @@ export default function Form() {
         setMode(currentMode);
     };
 
+    function handleAddMeet() {
+        console.log(name)
+        console.log(description)
+        console.log(date)
+    }
+
     return (
         <>
             <Container>
                 <Title>Nome</Title>
-                <Input />
+                <Input onChangeText={setName}/>
 
                 <Title>Descrição</Title>
-                {/* <Input multiline numberOfLines={6} /> */}
-                <Input multiline description={true}/>
+                <Input multiline description={true} onChangeText={setDescription}/>
 
                 <DateAndTime>
                     <ContentData>
@@ -85,7 +93,7 @@ export default function Form() {
 
 
             </Container >
-            <Button title="Cadastrar refeição" />
+            <Button title="Cadastrar refeição" onPress={handleAddMeet}/>
         </>
     )
 }

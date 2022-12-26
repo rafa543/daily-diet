@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components/native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-export type Largura = {
+export type Largura = TouchableOpacityProps &{
     largura?: string
     title?: string
 }
 
-export const Container = styled.TouchableOpacity<Largura>`
+export const Container = styled(TouchableOpacity)<Largura>`
     /* flex: 1; */
     background-color: ${({ theme }) =>theme.COLORS.GRAY_200 };
     /* min-height: 56px;

@@ -3,9 +3,9 @@ import { Container, Title } from "./styles";
 
 import { Largura } from "./styles";
 
-export default function Button({largura, title}: Largura ) {
+export default function Button({largura, title, ...rest}: Largura ) {
     return (
-        <Container largura={largura}>
+        <Container largura={largura} {...rest} >
             <Title>{title}</Title>
         </Container>
     )
