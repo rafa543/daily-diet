@@ -3,6 +3,9 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { ButtonDiet, Container, ContentButton, ContentData, DateAndTime, Hora, HourDateText, Input, InputDataHora, Status, Title } from "./styles";
 import { FlatList, Platform, Text, View } from "react-native";
 import Button from "@components/Button";
+import { meetCreate } from "@storage/meet/meetCreate";
+import { meetsGetAll } from "@storage/meet/meetGetAll";
+import { meetsDeleteAll } from "@storage/meet/meetDeleteAll";
 
 export default function Form() {
     const [name, setName] = useState("")
@@ -34,20 +37,40 @@ export default function Form() {
         setMode(currentMode);
     };
 
-    function handleAddMeet() {
-        console.log(name)
-        console.log(description)
-        console.log(date)
+    async function handleAddMeet() {
+
+        const storage = {
+            nome: name,
+            description: description,
+            data: dateSelected,
+            hour: hourSelected,
+            diet: onDiet
+        }
+        // meetsGetAll()
+        // meetsDeleteAll()
+        // meetCreate(JSON.stringify(storage))
+        let storageMeets = await meetsGetAll();
+        // const teste = storageMeets.toString().replace("/", "")
+        console.log("-------------------------------------")
+        console.log(storageMeets)
+        // console.log(JSON.parse(storageMeets.toString()))
+        storageMeets.forEach(function(user, index) {
+            console.log("[" + index + "]: " + user);
+            const tasdxg = JSON.parse(user)
+            console.log(tasdxg.nome)
+        });
+        // console.log(storageMeets.toString().replace("/", ""))
+        // console.log(storage)
     }
 
     return (
         <>
             <Container>
                 <Title>Nome</Title>
-                <Input onChangeText={setName}/>
+                <Input onChangeText={setName} />
 
                 <Title>Descrição</Title>
-                <Input multiline description={true} onChangeText={setDescription}/>
+                <Input multiline description={true} onChangeText={setDescription} />
 
                 <DateAndTime>
                     <ContentData>
@@ -93,7 +116,7 @@ export default function Form() {
 
 
             </Container >
-            <Button title="Cadastrar refeição" onPress={handleAddMeet}/>
+            <Button title="Cadastrar refeição" onPress={handleAddMeet} />
         </>
     )
 }
