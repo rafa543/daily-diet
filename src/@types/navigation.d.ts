@@ -3,9 +3,11 @@ export declare global {
         interface RootParamList {
             home: undefined;
             create: undefined;
-            // players: {
-            //     group: string
-            // }
+            feedback: {
+                title: string
+                subtitle: string
+                onDiet: boolean
+            }
         }
     }
 }

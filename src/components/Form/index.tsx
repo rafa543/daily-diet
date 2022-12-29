@@ -6,6 +6,7 @@ import Button from "@components/Button";
 import { meetCreate } from "@storage/meet/meetCreate";
 import { meetsGetAll } from "@storage/meet/meetGetAll";
 import { meetsDeleteAll } from "@storage/meet/meetDeleteAll";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Form() {
     const [name, setName] = useState("")
@@ -17,6 +18,8 @@ export default function Form() {
     const [dateSelected, setDateSelected] = useState("")
     const [hourSelected, setHourSelected] = useState("")
     const [onDiet, setOnDiet] = useState("")
+
+    const navigation = useNavigation()
 
     const onChange = (event: any, selectedDate: any) => {
         const currentDate = selectedDate || date
@@ -47,18 +50,28 @@ export default function Form() {
             diet: onDiet
         }
         // meetsGetAll()
-        // meetsDeleteAll()
-        // meetCreate(JSON.stringify(storage))
+        meetsDeleteAll()
+       
+        
+
+        try {
+            // await meetCreate(JSON.stringify(storage))
+            console.log(onDiet)
+            if(onDiet === "Sim") {
+                navigation.navigate("feedback", {title: "Continue assim!", subtitle: "Você continua dentro da dieta. Muito bem!", onDiet: true})
+            }else {
+                navigation.navigate("feedback", {title: "Que pena!", subtitle: "Você saiu da dieta dessa vez, mas continue se esforçando e não desista!", onDiet: false})
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
         let storageMeets = await meetsGetAll();
-        // const teste = storageMeets.toString().replace("/", "")
         console.log("-------------------------------------")
         console.log(storageMeets)
+
+        // const teste = storageMeets.toString().replace("/", "")
         // console.log(JSON.parse(storageMeets.toString()))
-        storageMeets.forEach(function(user, index) {
-            console.log("[" + index + "]: " + user);
-            const tasdxg = JSON.parse(user)
-            console.log(tasdxg.nome)
-        });
         // console.log(storageMeets.toString().replace("/", ""))
         // console.log(storage)
     }

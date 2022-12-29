@@ -1,13 +1,20 @@
 import theme from "src/theme";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
     align-items: center;
 `
 
-export const Title = styled.Text`
+type Props ={
+    onDiet: boolean
+}
+
+export const Title = styled.Text <Props>`
+    ${({theme, onDiet}) => css `
+        color: ${({theme}) => onDiet ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
+    `}
     font-size: ${({theme}) => theme.FONT_SIZE.XL}px;
-    color: ${({theme}) => theme.COLORS.GREEN_DARK};
+    /* color: ${({theme}) => theme.COLORS.GREEN_DARK}; */
     font-weight: bold;
     margin-bottom: 10px;
 `
