@@ -7,6 +7,7 @@ import { meetCreate } from "@storage/meet/meetCreate";
 import { meetsGetAll } from "@storage/meet/meetGetAll";
 import { meetsDeleteAll } from "@storage/meet/meetDeleteAll";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Form() {
     const [name, setName] = useState("")
@@ -47,16 +48,17 @@ export default function Form() {
             description: description,
             data: dateSelected,
             hour: hourSelected,
-            diet: onDiet
+            diet: onDiet === "Sim" ? true : false
         }
         // meetsGetAll()
-        meetsDeleteAll()
+        // meetsDeleteAll()
        
         
 
         try {
+            await meetCreate(JSON.stringify(storage))
             // await meetCreate(JSON.stringify(storage))
-            console.log(onDiet)
+            
             if(onDiet === "Sim") {
                 navigation.navigate("feedback", {title: "Continue assim!", subtitle: "Você continua dentro da dieta. Muito bem!", onDiet: true})
             }else {

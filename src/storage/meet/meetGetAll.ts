@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MEET_COLLECTION } from "@storage/storageConfig";
 
-type Props = {
+export type PropsMeets = {
     nome: string,
     description: string,
     data: string,
@@ -12,7 +12,8 @@ type Props = {
 export async function meetsGetAll() {
     try {
         const storage = await AsyncStorage.getItem(MEET_COLLECTION)
-        const meets: Props[] = storage ? JSON.parse(storage) : []
+        // const meets: PropsMeets[] = storage ? JSON.parse(storage) : []
+        const meets = storage ? JSON.parse(storage) : []
 
         return meets
     } catch (error) {
